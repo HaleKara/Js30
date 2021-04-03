@@ -1,26 +1,32 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>JS Drum Kit</title>
+    <meta charset="utf-8" />
+    <title>JS Drum Kit1</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!--data-(key) bilgi saklar. htmlden jsye çekmek için kullanılır.  -->
+    <!--kbd klavyeden o harfi seçer  -->
+    <!-- aynı satır içinde tutmak için kullanılır(divde olur da) -->
+    <div class="keys"> 
 
-
-    <div class="keys">
         <div data-key="65" class="key">
             <kbd>A</kbd>
             <span class="sound">clap</span>
         </div>
+
         <div data-key="83" class="key">
             <kbd>S</kbd>
             <span class="sound">hihat</span>
         </div>
+
         <div data-key="68" class="key">
             <kbd>D</kbd>
             <span class="sound">kick</span>
         </div>
+
         <div data-key="70" class="key">
             <kbd>F</kbd>
             <span class="sound">openhat</span>
@@ -56,11 +62,29 @@
     <audio data-key="74" src="sounds/snare.wav"></audio>
     <audio data-key="75" src="sounds/tom.wav"></audio>
     <audio data-key="76" src="sounds/tink.wav"></audio>
+    <!-- addEventListener keydownu tetikler, function(e)ı çağırır. element.addEventListener(olay,fonksiyon,kabarcıklanma) -->
 
     <script>
 
-    </script>
+        window.addEventListener('keydown', function (e) {   //keydown: bir tuşa basıldığında aşağıdakileri yap.
+            const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`); //queryselector nedir
+            const key = document.querySelector(`.key[data-key="${e.keyCode}"]`); //çevresini sarı yapabilmek için bunu oluşturdu.
+            if (!audio) return;
+            audio.currentTime = 0; //tıklayınca sesin ardarda çalmasını sağlar
+            audio.play();
+            key.classList.add('playing'); //css te tanımlayabilmek için. tuşa basınca classı değişir. Stilini değiştirmiş olursun. Çalınca yapılacak şeyi gösterir.
 
+        });
+        const keys = document.querySelectorAll('.key');
+        keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+
+        function removeTransition(e) {
+            if (e.propertyName !== 'transform') return;
+            this.classList.remove('playing');
+        };
+
+
+    </script>
 
 </body>
 </html>
