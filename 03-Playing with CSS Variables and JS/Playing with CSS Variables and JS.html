@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Scoped CSS Variables and JS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2> Update CSS Variables with <span class='hl'>JS</span></h2>
+    <div class="controls">
+        <label for="spacing">Spacing:</label> <!-- label ile yanyana yazılar yazılabilir -->
+        <input id="spacing" type="range" name="spacing" min="10" max="200" value="10" data-sizing="px"> <!-- input kullanabilmek için label gereklidir. -->
+
+        <label for="blur">Blur:</label>
+        <input id="blur" type="range" name="blur" min="0" max="25" value="10" data-sizing="px">
+
+        <label for="base"</label>
+        <input id="base" type="color" name="base" value="#ffc600">
+        
+    </div>
+    <img src="https://images.unsplash.com/photo-1592174484502-c80c13e2b9de?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" />
+    <script>
+        const inputs = document.querySelectorAll('.controls input'); //querySelectorAll
+   
+        function handleUpdate() {
+            const suffix = this.dataset.sizing || ''; ""
+            document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
+        }
+        inputs.forEach(input => input.addEventListener('change', handleUpdate));
+        inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
+   
+
+        </script>
+
+</body>
+</html>
