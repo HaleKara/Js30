@@ -1,0 +1,88 @@
+html {
+    font-family: 'Original Surfer', cursive;
+    background:#ffc600 ;
+    font-size : 5px;
+    font-weight: 100;
+    box-sizing: border-box;
+    /*box-sizing:initial;*/
+
+}
+
+body{
+    margin:0;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+  }
+  
+  .panels{
+      min-height:100vh;
+      overflow: hidden;
+      display:flex; /*flex dikeyde sıralama sağlar*/
+  }
+
+  .panel{
+      background: #6B0F9C;
+      box-shadow:burlywood;
+      color:white;
+      text-align: center;
+      align-items: center;
+      transition:
+        font-size 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
+        flex 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
+        background 0.2s;
+        font-size: 10px; /* yazıların sayfa ilk açıldığında boyutunu belirler*/
+        background-size: cover;
+        background-position: center;
+        flex:2; /* dikeyde sayfayı tamamen kapladı*/
+       justify-content: center;
+       display:flex;
+       flex-direction: column;
+  }
+.panel1{
+    background-image: url(https://images.unsplash.com/photo-1522033467113-b8db23657b96?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80);
+}
+.panel2{
+    background-image: url(https://images.unsplash.com/photo-1494403687614-8ca3e13f154f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80);
+}
+.panel3{
+    background-image: url(https://images.unsplash.com/photo-1532932371123-928bc0091ec0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=635&q=80);
+}
+.panel4{
+    background-image: url(https://images.unsplash.com/photo-1535615615570-3b839f4359be?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80);
+}
+.panel5{
+    background-image: url(https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80);
+}
+
+/* Flex Children panel1 panel2 gibi*/
+
+.panel>* {
+    margin:0; /* Boşlukları sıfırladı */
+    width:100%;
+    transition:transform 0.5s;
+    flex:1 0 auto;
+    display: flex;
+    justify-content:center;
+    align-items: center; /* yazılar ortaladı sayfayı*/
+}
+
+.panel p { /* Anlayamadım p neden var*/
+    text-transform: uppercase; /* Yazıları büyük harf yaptık */
+    
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.72), 0 0 14px rgba(0, 0, 0, 0.45); /* Yazılara gölge verildi */
+    font-size: 2em; /* Yazıların genişliği arttırıldı */
+  }
+  
+  .panel p:nth-child(2) {
+    font-size: 4em;  /* html de p olanların 2.elemanını büyük yaptık */
+  }
+
+  .panel.open { /* Js de panel classını toggle ile open classına çevirdik bu yüzden burada panel.open dedik */
+
+    font-size: 30px;
+    flex: 5;
+  }
+
+ 
